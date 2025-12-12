@@ -101,27 +101,23 @@ int main(){
 
         // 50% chance someone joins
 
-        if (fiftyFifty) {
+        if (fiftyFifty()) {
             Customer arriving = makeCustomer(names, orders);
             cout << "Arrives: " << arriving.name << " wants " << arriving.order << endl;
             coffee.enqueue(arriving);
         } else {
             cout << "No arrival this round\n";
         }
+
+        if (!coffee.empty()) {
+            Customer served = coffee.dequeue();
+            cout << "Served: " << served.name << " - " << served.order << endl;
+        } else {
+            cout << "No one to serve\n";
+        }
+
+        coffee.print();
     }
-
-    cus
-
-    coffee.enqueue(makeCustomer(names, orders)); 
-    coffee.enqueue(makeCustomer(names, orders));
-    coffee.enqueue(makeCustomer(names, orders));
-
-    coffee.print();
-
-    Customer served = coffee.dequeue();
-    cout << "Served: " << served.name << " - " << served.order << endl;
-
-    coffee.print();
 
     return 0;
 }
