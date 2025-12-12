@@ -14,15 +14,16 @@ string Customer {
 };
 
 int randInt(int low, int high) { return low + (rand() % (high - low + 1)); }
+bool fiftyFifty() { return randInt(0, 1) == 1;}
 
-
-Customer makeCustomer(const vector<string>& names, const vector<>>& orders) {
+Customer makeCustomer(const vector<string>& names, const vector<string>& orders) {
     Customer c;
-
     c.name = names[randInt(0, (int)names.size() - 1)];
     c.order = orders[randInt(0, (int)orders.size() - 1)];
     return c;
 }
+
+// milsetone 1: linked list node contains customer name and order
 
 struct Node {
     Customer data;
@@ -33,10 +34,29 @@ struct CoffeeQueue {
     Node* head = nullptr;
     Node* tail = nullptr;
     int size = 0;
-    
 
+    void enque (const Customer& c) {
+        Node* newNode = new Node(c);
+        if (!tail) {
+            head = tail = n;
+        } else {
+            tail->next = n;
+            tail = n;
+        }
+        size++;
+    }
 
+    customer deque() {
+
+        Node* old = head;
+        Customer c = old->data;
+        head = head->next;
+
+        
+    }
 }
+
+
 
 
 int main(){
