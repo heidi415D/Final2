@@ -87,6 +87,15 @@ void printDeque (const deque<Customer>& dq, const string& label){
     cout << "\n";
 }
 
+// bracelet booth (vector)
+void printVector (const vector<Customer>& v, const string& label){
+    cout << "[" << label << " size=" << v.size() << "] ";
+    for (const auto& c : v) {
+    cout << c.name << "(" << c.order << ") ";
+    }
+    cout << "\n";
+}
+
 
 
 
