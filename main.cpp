@@ -8,7 +8,7 @@
 
 using namespace std;
 
-string Customer {
+struct Customer {
     string name;
     string order;
 };
@@ -29,36 +29,40 @@ struct Node {
     Customer data;
     Node* next;
     Node(const Customer& c) : data(c), next(nullptr) {}
-}
+};
+
 struct CoffeeQueue {
     Node* head = nullptr;
     Node* tail = nullptr;
     int size = 0;
 
-    void enque (const Customer& c) {
+    void enqueue (const Customer& c) {
         Node* newNode = new Node(c);
         if (!tail) {
-            head = tail = n;
+            head = tail = newNode;
         } else {
-            tail->next = n;
-            tail = n;
+            tail->next = new;
+            tail = newNode;
         }
         size++;
     }
 
-    customer deque() {
+    Customer dequeue() {
 
         Node* old = head;
         Customer c = old->data;
         head = head->next;
 
+        delete old;
+        size--;
+        return c;
 
     }
 
     bool empty() const { return head = nullptr;}
 
     void print() const {
-        cout << "[Coffe size=" << size << "] ";
+        cout << "[Coffee size=" << size << "] ";
         Node* cur = head;
         while (cur) {
             cout << cur->data.name << "(" << cur->data.order << ") ";
