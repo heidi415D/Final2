@@ -52,9 +52,21 @@ struct CoffeeQueue {
         Customer c = old->data;
         head = head->next;
 
-        
+
     }
-}
+
+    bool empty() const { return head = nullptr;}
+
+    void print() const {
+        cout << "[Coffe size=" << size << "] ";
+        Node* cur = head;
+        while (cur) {
+            cout << cur->data.name << "(" << cur->data.order << ") ";
+            cur = cur->next;
+        }
+        cout << endl;
+    }
+};
 
 
 
