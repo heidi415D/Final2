@@ -96,7 +96,7 @@ int main(){
 
     cout << "\n=== Coffee Booth Simulation (10 rounds) ===\n";
 
-    for (int round = 1; round < 10; round++) {
+    for (int round = 1; round <= 10; round++) {
         cout << "\nRound " << round << ":\n";
 
         // 50% chance someone joins
