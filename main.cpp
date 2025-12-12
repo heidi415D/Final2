@@ -143,7 +143,7 @@ int main(){
     }
 
 
-    cout << "\n=== Coffee + Muffins + Bracelets (10 rounds) ===\n";
+    cout << "\n=== Coffee + Muffins + Bracelets + candy (10 rounds) ===\n";
 
     for (int round = 1; round <= 10; round++) {
         cout << "\nRound " << round << ":\n";
@@ -173,6 +173,14 @@ int main(){
             cout << "No bracelet arrival\n"; 
         }
 
+        if (fiftyFifty()) {  
+    Customer c = makeCustomer(names, candyOrders);  
+    cout << "Arrives candy: " << c.name << " wants " << c.order << "\n"; 
+    candy.push(c);  
+} else {
+    cout << "No candy arrival\n";  
+}
+
         // serve coffee
         if (!coffee.empty()) {
             Customer served = coffee.dequeue(); 
@@ -198,10 +206,19 @@ int main(){
         } else {
             cout << "No one served bracelets\n"; 
         }
+
+        if (!candy.empty()) {  
+    Customer served = candy.front();  
+    candy.pop();  
+    cout << "Serves candy: " << served.name << " with " << served.order << "\n";  
+    } else {
+    cout << "No one served candy\n"; 
+}
         
          coffee.print();
         printDeque(muffins, "Muffins");
         printVector(bracelets, "Bracelets");
+        printQueue(candy, "Candy");
 
     }
     return 0;
