@@ -90,6 +90,17 @@ int main(){
 
     CoffeeQueue coffee;
 
+    coffee.enqueue(makeCustomer(names, orders)); 
+    coffee.enqueue(makeCustomer(names, orders));
+    coffee.enqueue(makeCustomer(names, orders));
+
+    coffee.print();
+
+    Customer served = coffee.dequeue();
+    cout << "Served: " << served.name << " - " << served.order << endl;
+
+    coffee.print();
+
     return 0;
 }
 
