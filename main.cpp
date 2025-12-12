@@ -132,26 +132,55 @@ int main(){
     for (int round = 1; round <= 10; round++) {
         cout << "\nRound " << round << ":\n";
 
-        // arrivals
-    if (fiftyFifty())
-            coffee.enqueue(makeCustomer(names, coffeeOrders));
-        if (fiftyFifty())
-            muffins.push_back(makeCustomer(names, muffinOrders));
-        if (fiftyFifty())
-            bracelets.push_back(makeCustomer(names, braceletOrders));
-        
+       // arrivals
+        if (fiftyFifty()) { 
+            Customer c = makeCustomer(names, coffeeOrders); 
+            cout << "Arrives coffee: " << c.name << " wants " << c.order << "\n"; 
+            coffee.enqueue(c);
+        } else {
+            cout << "No coffee arrival\n"; 
+        }
 
-         // serve coffee
-        if (!coffee.empty())
-            coffee.dequeue();
+        if (fiftyFifty()) { 
+            Customer c = makeCustomer(names, muffinOrders);
+            cout << "Arrives muffin: " << c.name << " wants " << c.order << "\n"; 
+            muffins.push_back(c);
+        } else {
+            cout << "No muffin arrival\n"; 
+        }
+
+        if (fiftyFifty()) { 
+            Customer c = makeCustomer(names, braceletOrders); 
+            cout << "Arrives bracelet: " << c.name << " wants " << c.order << "\n"; 
+            bracelets.push_back(c);
+        } else {
+            cout << "No bracelet arrival\n"; 
+        }
+
+        // serve coffee
+        if (!coffee.empty()) {
+            Customer served = coffee.dequeue(); 
+            cout << "Serves coffee: " << served.name << " with " << served.order << "\n"; // CHANGED
+        } else {
+            cout << "No one served coffee\n"; 
+        }
 
         // serve muffin
-        if (!muffins.empty())
+        if (!muffins.empty()) { 
+            Customer served = muffins.front(); 
             muffins.pop_front();
+            cout << "Serves muffin: " << served.name << " with " << served.order << "\n"; // CHANGED
+        } else {
+            cout << "No one served muffins\n"; 
+        }
 
-        // serve bracelet
-        if (!bracelets.empty()) {
-            bracelets.erase(bracelets.begin() + 1);
+        // serve bracelet 
+        if (!bracelets.empty()) { 
+            Customer served = bracelets.front(); 
+            bracelets.erase(bracelets.begin());
+            cout << "Serves bracelet: " << served.name << " with " << served.order << "\n"; 
+        } else {
+            cout << "No one served bracelets\n"; 
         }
         
          coffee.print();
