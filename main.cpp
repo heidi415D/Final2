@@ -124,10 +124,14 @@ int main(){
 
      vector<string> braceletOrders = {"Red","Blue","Green","Purple","Pink","Yellow"};
 
+     vector<string> candyOrders = {"Gummy","Chocolate","Lollipop","Caramel","Toffee"};
+
 
     CoffeeQueue coffee;
     deque<Customer> muffins;
     vector<Customer> bracelets;
+    queue<Customer> candy;
+
 
     // initialize  each booth w/ 3 customers
 
@@ -135,6 +139,7 @@ int main(){
     coffee.enqueue(makeCustomer(names, coffeeOrders));
     muffins.push_back(makeCustomer(names, muffinOrders));
     bracelets.push_back(makeCustomer(names, braceletOrders));
+    candy.push(makeCustomer(names, candyOrders));
     }
 
 
