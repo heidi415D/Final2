@@ -41,7 +41,7 @@ struct CoffeeQueue {
         if (!tail) {
             head = tail = newNode;
         } else {
-            tail->next = new;
+            tail->next = newNode;
             tail = newNode;
         }
         size++;
@@ -49,9 +49,13 @@ struct CoffeeQueue {
 
     Customer dequeue() {
 
+        if (!head) return {"", ""};
+
         Node* old = head;
         Customer c = old->data;
         head = head->next;
+
+        if (!head) tail = nullptr;
 
         delete old;
         size--;
@@ -59,7 +63,9 @@ struct CoffeeQueue {
 
     }
 
-    bool empty() const { return head = nullptr;}
+    bool empty() const { 
+        return head == nullptr;
+    }
 
     void print() const {
         cout << "[Coffee size=" << size << "] ";
@@ -76,7 +82,14 @@ struct CoffeeQueue {
 
 
 int main(){
+    srand((unsigned)time(nullptr));
+
     cout << "Simulation starting...\n";
+    vector<string> names = {"Alice", "Bob", "Charlie", "Diana", "Eve"};
+    vector<string> orders = {"Espresso", "Latte", "Cappuccino"};
+
+    CoffeeQueue coffee;
+
     return 0;
 }
 
