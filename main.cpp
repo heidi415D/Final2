@@ -90,6 +90,28 @@ int main(){
 
     CoffeeQueue coffee;
 
+    // milestone 2 : initialize w/ 3 customers
+
+    for (int i = 0; i < 3; i++) coffee.enqueue(makeCustomer(names, orders));
+
+    cout << "\n=== Coffee Booth Simulation (10 rounds) ===\n";
+
+    for (int round = 1; round < 10; round++) {
+        cout << "\nRound " << round << ":\n";
+
+        // 50% chance someone joins
+
+        if (fiftyFifty) {
+            Customer arriving = makeCustomer(names, orders);
+            cout << "Arrives: " << arriving.name << " wants " << arriving.order << endl;
+            coffee.enqueue(arriving);
+        } else {
+            cout << "No arrival this round\n";
+        }
+    }
+
+    cus
+
     coffee.enqueue(makeCustomer(names, orders)); 
     coffee.enqueue(makeCustomer(names, orders));
     coffee.enqueue(makeCustomer(names, orders));
