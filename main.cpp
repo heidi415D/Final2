@@ -118,26 +118,30 @@ int main(){
     for (int round = 1; round <= 10; round++) {
         cout << "\nRound " << round << ":\n";
 
-        // 50% chance someone joins
+        // arrivals
 
         if (fiftyFifty()) {
-            Customer arriving = makeCustomer(names, coffeeOrders);
-            cout << "Arrives: " << arriving.name << " wants " << arriving.order << endl;
-            coffee.enqueue(arriving);
-        } else {
-            cout << "No arrival this round\n";
-        }
-
-        if (!coffee.empty()) {
-            Customer served = coffee.dequeue();
-            cout << "Served: " << served.name << " - " << served.order << endl;
-        } else {
-            cout << "No one to serve\n";
-        }
-
-        coffee.print();
+            Customer c = makeCustomer(names, coffeeOrders);
+            cout << "Arrives coffee: " << c.name << " wants " << c.order << "\n";
+            coffee.enqueue(c);
     }
 
+    if (fiftyFifty()) {
+            Customer c = makeCustomer(names, muffinOrders);
+            cout << "Arrives muffin: " << c.name << " wants " << c.order << "\n";
+            muffins.push_back(c);
+        }
+
+        // serve 
+
+        
+
+        // print queues
+
+        coffee.print();
+        printDeque(muffins, "Muffin");
+
+    }
     return 0;
 }
 
