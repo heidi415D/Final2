@@ -141,27 +141,22 @@ int main(){
             bracelets.push_back(makeCustomer(names, braceletOrders));
         
 
-        // serve 
-        if (!coffee.empty()) {
-            Customer c = coffee.dequeue();
-            cout << "Serves coffee: " << c.name << " with " << c.order << "\n";
-        } else {
-            cout << "No one served coffee\n";
-        }
+         // serve coffee
+        if (!coffee.empty())
+            coffee.dequeue();
 
-        if (!muffins.empty()) {
-            Customer c = muffins.front();
+        // serve muffin
+        if (!muffins.empty())
             muffins.pop_front();
-            cout << "Serves muffin: " << c.name << " with " << c.order << "\n";
-        } else {
-            cout << "No one served muffins\n";
+
+        // serve bracelet
+        if (!bracelets.empty()) {
+            bracelets.erase(bracelets.begin() + 1);
         }
-
         
-     // print queues
-
-        coffee.print();
+         coffee.print();
         printDeque(muffins, "Muffins");
+        printVector(bracelets, "Bracelets");
 
     }
     return 0;
