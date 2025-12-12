@@ -133,13 +133,26 @@ int main(){
         }
 
         // serve 
+        if (!coffee.empty()) {
+            Customer c = coffee.dequeue();
+            cout << "Serves coffee: " << c.name << " with " << c.order << "\n";
+        } else {
+            cout << "No one served coffee\n";
+        }
+
+        if (!muffins.empty()) {
+            Customer c = muffins.front();
+            muffins.pop_front();
+            cout << "Serves muffin: " << c.name << " with " << c.order << "\n";
+        } else {
+            cout << "No one served muffins\n";
+        }
 
         
-
-        // print queues
+     // print queues
 
         coffee.print();
-        printDeque(muffins, "Muffin");
+        printDeque(muffins, "Muffins");
 
     }
     return 0;
