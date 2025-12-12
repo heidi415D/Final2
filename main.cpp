@@ -78,23 +78,42 @@ struct CoffeeQueue {
     }
 };
 
+// muffin booth (deque)
+void printDeque (const deque<Customer>& dq, const string& label){
+    cout << "[" << label << " size=" << dq.size() << "] ";
+    for (const auto& c : dq) {
+    cout << c.name << "(" << c.order << ") ";
+    }
+    cout << "\n";
+}
+
 
 
 
 int main(){
     srand((unsigned)time(nullptr));
 
-    cout << "Simulation starting...\n";
-    vector<string> names = {"Alice", "Bob", "Charlie", "Diana", "Eve"};
-    vector<string> orders = {"Espresso", "Latte", "Cappuccino"};
+    vector<string> names = { "Ava","Leo","Mia","Noah","Sofia","Eli","Nina","Omar","Ivy","Kai"
+    };
+
+    vector<string> coffeeOrders = {"Latte","Americano","ColdBrew","Mocha","Cappuccino","Chai","Espresso"
+    };
+
+    vector<string> muffinOrders = {"Blueberry","ChocolateChip","BananaNut","Corn","Bran","LemonPoppy"
+    };
 
     CoffeeQueue coffee;
+    deque<Customer> muffins;
 
-    // milestone 2 : initialize w/ 3 customers
+    // initialize both queues w/ 3 customers
 
-    for (int i = 0; i < 3; i++) coffee.enqueue(makeCustomer(names, orders));
+    for (int i = 0; i < 3; i++) {
+    coffee.enqueue(makeCustomer(names, coffeeOrders));
+    muffins.push_back(makeCustomer(names, muffinOrders));
+    }
 
-    cout << "\n=== Coffee Booth Simulation (10 rounds) ===\n";
+
+    cout << "\n=== Coffee + Muffin Booths (10 rounds) ===\n";
 
     for (int round = 1; round <= 10; round++) {
         cout << "\nRound " << round << ":\n";
@@ -102,7 +121,7 @@ int main(){
         // 50% chance someone joins
 
         if (fiftyFifty()) {
-            Customer arriving = makeCustomer(names, orders);
+            Customer arriving = makeCustomer(names, coffeeOrders);
             cout << "Arrives: " << arriving.name << " wants " << arriving.order << endl;
             coffee.enqueue(arriving);
         } else {
