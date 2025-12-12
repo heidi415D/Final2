@@ -111,35 +111,35 @@ int main(){
     vector<string> muffinOrders = {"Blueberry","ChocolateChip","BananaNut","Corn","Bran","LemonPoppy"
     };
 
+     vector<string> braceletOrders = {"Red","Blue","Green","Purple","Pink","Yellow"};
+
+
     CoffeeQueue coffee;
     deque<Customer> muffins;
+    vector<Customer> bracelets;
 
-    // initialize both queues w/ 3 customers
+    // initialize  each booth w/ 3 customers
 
     for (int i = 0; i < 3; i++) {
     coffee.enqueue(makeCustomer(names, coffeeOrders));
     muffins.push_back(makeCustomer(names, muffinOrders));
+    bracelets.push_back(makeCustomer(names, braceletOrders));
     }
 
 
-    cout << "\n=== Coffee + Muffin Booths (10 rounds) ===\n";
+    cout << "\n=== Coffee + Muffins + Bracelets (10 rounds) ===\n";
 
     for (int round = 1; round <= 10; round++) {
         cout << "\nRound " << round << ":\n";
 
         // arrivals
-
-        if (fiftyFifty()) {
-            Customer c = makeCustomer(names, coffeeOrders);
-            cout << "Arrives coffee: " << c.name << " wants " << c.order << "\n";
-            coffee.enqueue(c);
-    }
-
-    if (fiftyFifty()) {
-            Customer c = makeCustomer(names, muffinOrders);
-            cout << "Arrives muffin: " << c.name << " wants " << c.order << "\n";
-            muffins.push_back(c);
-        }
+    if (fiftyFifty())
+            coffee.enqueue(makeCustomer(names, coffeeOrders));
+        if (fiftyFifty())
+            muffins.push_back(makeCustomer(names, muffinOrders));
+        if (fiftyFifty())
+            bracelets.push_back(makeCustomer(names, braceletOrders));
+        
 
         // serve 
         if (!coffee.empty()) {
