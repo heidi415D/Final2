@@ -96,6 +96,17 @@ void printVector (const vector<Customer>& v, const string& label){
     cout << "\n";
 }
 
+// Candy booth (queue) 
+void printQueue(queue<Customer> q, const string& label) { 
+    cout << "[" << label << " size=" << q.size() << "] ";
+        while (!q.empty()) {                                 
+         Customer c = q.front();                           
+        cout << c.name << "(" << c.order << ") ";
+        q.pop();                                          
+    }
+    cout << endl;
+}
+
 
 
 
@@ -160,7 +171,7 @@ int main(){
         // serve coffee
         if (!coffee.empty()) {
             Customer served = coffee.dequeue(); 
-            cout << "Serves coffee: " << served.name << " with " << served.order << "\n"; // CHANGED
+            cout << "Serves coffee: " << served.name << " with " << served.order << "\n"; 
         } else {
             cout << "No one served coffee\n"; 
         }
@@ -169,7 +180,7 @@ int main(){
         if (!muffins.empty()) { 
             Customer served = muffins.front(); 
             muffins.pop_front();
-            cout << "Serves muffin: " << served.name << " with " << served.order << "\n"; // CHANGED
+            cout << "Serves muffin: " << served.name << " with " << served.order << "\n"; 
         } else {
             cout << "No one served muffins\n"; 
         }
